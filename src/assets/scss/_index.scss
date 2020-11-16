@@ -1,0 +1,23 @@
+//index
+#mainWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+#allSample {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  .miniSample {
+    width: 48%;
+    margin-top: 15px;
+    &:not(:nth-child(2n)) {
+      margin-right: 4%;
+    }
+    img {
+        width: 100%;
+    }
+  }
+}

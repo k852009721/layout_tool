@@ -1,0 +1,258 @@
+#sample {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+.previewWrapper {
+  overflow: hidden;
+  // margin: 20px auto;
+  &.large {
+    width: 1040px;
+    height: 1040px;
+  }
+  &.mid {
+    width: 520px;
+    height: 520px;
+  }
+  &.small {
+    width: 312px;
+    height: 312px;
+  }
+}
+#preview {
+  position: relative;
+  width: 1040px;
+  height: 1040px;
+  transform: scale(0.3);
+  transform-origin: top left;
+  border: 1px solid #9b9b9b;
+
+  img.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .wrapperTop {
+    width: 100%;
+    height: 46%;
+    z-index: z("wrapper_top");
+    .avatar {
+      position: absolute;
+      width: 254px;
+      height: 254px;
+      border-radius: 100%;
+      z-index: z("avatar");
+      &.center {
+        top: 91px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.left {
+        top: 116px;
+        left: 100px;
+      }
+    }
+    .shopName {
+      position: absolute;
+      font-size: 59px;
+      line-height: 59px;
+      color: #ffffff;
+      z-index: z("shopName");
+      &.center {
+        top: 402px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.left {
+        top: 214px;
+        left: 406px;
+      }
+    }
+  }
+  .wrapperBottom {
+    width: 100%;
+    height: 54%;
+    z-index: z("wrapper_bottom");
+  }
+
+  .mask {
+    z-index: z("mask");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &.show {
+      display: block;
+    }
+    &.noshow {
+      display: none;
+    }
+  }
+  #menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: z("menu");
+    svg {
+      text,
+      path {
+        fill: white;
+      }
+      line {
+        stroke: white;
+      }
+    }
+  }
+  #menuBorder,
+  #avatarBorder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: z("border");
+  }
+}
+#setting_menu,
+#setting_rich {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  &.active {
+    display: flex;
+  }
+  .setting {
+    display: flex;
+    align-items: center;
+    + .setting {
+      margin-top: 10px;
+    }
+    .title {
+      width: 40%;
+    }
+    .value {
+    }
+    input.image {
+      display: none;
+    }
+    select {
+      max-width: 25%;
+    }
+  }
+}
+
+#convertImage {
+  margin: 10px auto;
+}
+
+#finalImage,
+#finalImage2 {
+  width: 100%;
+  height: 312px;
+  overflow: hidden;
+}
+
+#richMenu {
+  width: 312px;
+
+  overflow: hidden;
+  &.large {
+    height: 312px;
+  }
+  &.small {
+    height: 106px;
+  }
+  .preview {
+    position: relative;
+    transform: scale(0.1248);
+    transform-origin: top left;
+    background-color: #FFF8EB;
+    &.large {
+      width: 2500px;
+      height: 1686px;
+    }
+    &.small {
+      width: 2500px;
+      height: 843px;
+    }
+    .top.large { height: 607px; }
+    .top.small { height: 437px; }
+    .bottom.large { height: 1079px; }
+    .bottom.small { height: 406px; }
+
+    img.background { width: 100%; }
+
+    .avatar {
+      position: absolute;
+      border-radius: 100%;
+      border: 5px solid #776651;
+      &.large {
+        top: 113px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 400px;
+      }
+      &.small {
+        top: 73px;
+        left: 152px;
+        width: 473px;
+        height: 473px;
+      }
+    }
+    .name {
+      position: absolute;
+      line-height: 1.2;
+      color: #776651;
+      &.large {
+        top: 553px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 100px;
+      }
+      &.small {
+        top: 198px;
+        left: 735px;
+        font-size: 132px; 
+      }
+    }
+    .icons {
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 94%;
+      &.large {
+        bottom: 236px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.small {
+        bottom: 120px;
+        left: 80px;
+      }
+      .icon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 24%;
+        margin-top: 118px;
+        &.mid { width: 33%; }
+        &.max { width: 25%; }
+      }
+    }
+    .top_border,
+    .bottom_border,
+    .icon_border,
+    .settingIcon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
