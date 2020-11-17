@@ -251,7 +251,8 @@
       </div>
     </div>
     <div id="convertImage" @click="convertImage" class="btn">產生圖片</div>
-    <div id="downloadImage" @click="downloadImage" class="btn">下載圖片</div>
+    <div id="downloadImage1" @click="downloadImage" class="btn">下載圖片1</div>
+    <div id="downloadImage2" @click="downloadImage" class="btn">下載圖片2</div>
 
     <div id="finalImage"></div>
     <div id="finalImage2"></div>
@@ -487,7 +488,7 @@ export default {
           console.error("oops, something went wrong!", error);
         });
     },
-    downloadImage() {
+    downloadImage(e) {
       let node = document.body.querySelector("#preview");
       let newPreveiw = node.cloneNode(true);
       let wp = document.getElementById('finalImage');
@@ -498,19 +499,26 @@ export default {
 
       newPreveiw.style.transform = "unset"
       newPreveiw2.querySelector('.preview').style.transform = "unset"
-      // newPreveiw.style.transformOrigin = "unset"
 
       wp.appendChild(newPreveiw)
       wp2.appendChild(newPreveiw2)
 
-      htmlToImage.toPng(document.body.querySelector('#finalImage #preview'))
-      .then(function (dataUrl) {
-        download(dataUrl, 'my-node.png');
-      });
-      htmlToImage.toPng(document.body.querySelector('#finalImage2 #richMenu .preview'))
-      .then(function (dataUrl) {
-        download(dataUrl, 'my-node1.png');
-      });
+      switch(e.target.id) {
+        case 'downloadImage1':
+          htmlToImage.toPng(document.body.querySelector('#finalImage #preview'))
+          .then(function (dataUrl) {
+            download(dataUrl, 'my-node.png');
+          });
+          break;
+        case 'downloadImage2':
+          htmlToImage.toPng(document.body.querySelector('#finalImage2 #richMenu .preview'))
+          .then(function (dataUrl) {
+            download(dataUrl, 'my-node1.png');
+          });
+          break;
+      }
+
+
     },
     matchMedia() {
       window.matchMedia("(min-width: 1025px)").matches
