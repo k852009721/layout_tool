@@ -1117,7 +1117,6 @@
                 </clipPath>
             </defs>
             <g id="套版G_1042" data-name="套版G – 1042" clip-path="url(#clip-套版G_1042)">
-                <path id="Path_2431" data-name="Path 2431" d="M0,0H1040V1040H0Z" fill="rgba(183,183,183,0)"/>
                 <rect id="Rectangle_248" data-name="Rectangle 248" width="1040" height="567" transform="translate(0 473)" fill="none"/>
                 <g id="Rectangle_240" data-name="Rectangle 240" transform="translate(52 517)" fill="none" stroke="#a47973" stroke-width="3">
                 <rect width="936" height="472" rx="7" stroke="none"/>

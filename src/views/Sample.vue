@@ -491,15 +491,26 @@ export default {
       let node = document.body.querySelector("#preview");
       let newPreveiw = node.cloneNode(true);
       let wp = document.getElementById('finalImage');
+
+      let node2 = document.body.querySelector("#richMenu");
+      let newPreveiw2 = node2.cloneNode(true);
+      let wp2 = document.getElementById('finalImage2');
+
       newPreveiw.style.transform = "unset"
+      newPreveiw2.querySelector('.preview').style.transform = "unset"
       // newPreveiw.style.transformOrigin = "unset"
 
       wp.appendChild(newPreveiw)
+      wp2.appendChild(newPreveiw2)
 
       htmlToImage.toPng(document.body.querySelector('#finalImage #preview'))
       .then(function (dataUrl) {
         download(dataUrl, 'my-node.png');
-  });
+      });
+      htmlToImage.toPng(document.body.querySelector('#finalImage2 #richMenu .preview'))
+      .then(function (dataUrl) {
+        download(dataUrl, 'my-node1.png');
+      });
     },
     matchMedia() {
       window.matchMedia("(min-width: 1025px)").matches
