@@ -251,6 +251,7 @@
       </div>
     </div>
     <div id="convertImage" @click="convertImage" class="btn">產生圖片</div>
+    <div id="downloadImage" @click="downloadImage" class="btn">下載圖片</div>
 
     <div id="finalImage"></div>
     <div id="finalImage2"></div>
@@ -262,6 +263,7 @@ import RichMenu from "@/components/RichMenu.vue";
 import AvatarBorder from "@/components/svg/avatarBorder.vue";
 import MenuBorder from "@/components/svg/menuBorder.vue";
 import * as htmlToImage from "html-to-image";
+import download from "downloadjs";
 import store from "@/store.js";
 // import { toPng } from 'html-to-image';
 
@@ -459,7 +461,7 @@ export default {
       }
     },
     convertImage() {
-      let node = document.querySelector(".previewWrapper");
+      let node = document.querySelector("#preview");
       let node2 = document.querySelector("#richMenu");
 
       htmlToImage
@@ -468,6 +470,7 @@ export default {
           let img = new Image();
           img.src = dataUrl;
           document.getElementById("finalImage").appendChild(img);
+          // download(dataUrl, 'my-node.png');
         })
         .catch(function (error) {
           console.error("oops, something went wrong!", error);
@@ -483,6 +486,20 @@ export default {
         .catch(function (error) {
           console.error("oops, something went wrong!", error);
         });
+    },
+    downloadImage() {
+      let node = document.body.querySelector("#preview");
+      let newPreveiw = node.cloneNode(true);
+      let wp = document.getElementById('finalImage');
+      newPreveiw.style.transform = "unset"
+      // newPreveiw.style.transformOrigin = "unset"
+
+      wp.appendChild(newPreveiw)
+
+      htmlToImage.toPng(document.body.querySelector('#finalImage #preview'))
+      .then(function (dataUrl) {
+        download(dataUrl, 'my-node.png');
+  });
     },
     matchMedia() {
       window.matchMedia("(min-width: 1025px)").matches
